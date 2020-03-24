@@ -5,6 +5,8 @@
 #include <sys/syscall.h>   /* For SYS_write etc */
 #include <sys/user.h>
 #include <sys/reg.h>
+#include "sys_call_table/sys_call_table.h"
+#include "sys_call_table/sys_call_table.c"
 
 int main()
 {   pid_t child;
@@ -25,6 +27,8 @@ int main()
             orig_eax = ptrace(PTRACE_PEEKUSER,
                               child, 8 * ORIG_RAX, NULL);
             if(orig_eax == SYS_write) {
+                char* syscall = get_sys_call_name(orig_eax);
+                printf("System call name: %s\n", syscall);
                 if(insyscall == 0) {
                     /* Syscall entry */
                     insyscall = 1;
