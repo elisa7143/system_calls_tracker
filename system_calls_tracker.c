@@ -12,17 +12,27 @@
 
 int main()
 {
-    debug_with_step();
+    char * path = "/bin/ls";
+    char * args = "ls";
+    if(1)
+    {  
+        debug_with_step(path,args);
+    }
+    else
+    {
+        debug_without_step(path,args);
+    }
+    
     return 0;
 }
 
-void debug_with_step(){
+void debug_with_step(char * path,char * args){
  pid_t child;
     const int long_size = sizeof(long);
     child = fork();
     if(child == 0) {
         ptrace(PTRACE_TRACEME, 0, NULL, NULL);
-        execl("/bin/ls", "ls", NULL);
+        execl(path, args, NULL);
     }
     else {
         int status;
@@ -74,7 +84,7 @@ void debug_with_step(){
     return 0;
 }
 
-void debug_without_step(){
+void debug_without_step(char * path,char * args){
     pid_t child;
     long orig_eax, eax;
     long params[3];
@@ -84,7 +94,7 @@ void debug_without_step(){
     if (child == 0)
     {
         ptrace(PTRACE_TRACEME, 0, NULL, NULL);
-        execl("/bin/ls", "ls", NULL);
+        execl(path, args, NULL);
     }
     else
     {
