@@ -7,7 +7,7 @@ Este programa traza los system calls de procesos hijos.
 
 - Ejecutar los siguientes comandos para correr el programa: 
   ```bash
-    ./system_calls_tracker [OPTION] Prog [PROG_OPTION]
+  ./system_calls_tracker [OPTION] Prog [PROG_OPTION]
   ```
 
 Las opciones válidas (`OPTION`) para system_calls_tracker son:
@@ -16,6 +16,20 @@ Las opciones válidas (`OPTION`) para system_calls_tracker son:
   - V     idéntico a la opción -v, pero hace una pausa hasta que el usuario 
           presione cualquier tecla para continuar la ejecución de Prog.
 ```
+
+## 2. Ejemplos
+
+- Ejemplo de detección de system calls **sin pausa**:
+
+  ```bash
+  ./system_calls_tracker -v /bin/ls -l
+  ```
+  
+- Ejemplo de detección de system calls **con pausa**:
+
+  ```bash
+  ./system_calls_tracker -V /bin/ls -l
+  ```
 
 
 ## Desarrollado por
