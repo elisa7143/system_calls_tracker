@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     char *pseudo_program;
     i = 0;
     if(argc > 6){
-        printf("Expected less than 5 arguments.\n");
+        printf("Expected less than 3 arguments.\n");
         exit(EXIT_FAILURE);
     }
     //these lines of code are placed to validate if there are any parameters
@@ -121,22 +121,6 @@ int main(int argc, char *argv[])
     }
 }
 
-/*int main()
-{
-    char * path = "/bin/ls";
-    char * args = "ls";
-    if(1)
-    {  
-        debug_with_step(path,args);
-    }
-    else
-    {
-        debug_without_step(path,args);
-    }
-    
-    return 0;
-}*/
-
 void debug_with_step(char * path,char * args[]){
     pid_t child;
     const int long_size = sizeof(long);
@@ -177,8 +161,6 @@ void debug_with_step(char * path,char * args[]){
                        NULL, NULL);
           
                 
-                //printf("Enter any character: ");
-                //read a single character
                 ch=fgetc(stdin);
                 
                 if(ch==0x0A)
@@ -186,9 +168,7 @@ void debug_with_step(char * path,char * args[]){
                     ptrace(PTRACE_SYSCALL, child,
                        NULL, NULL);
                 }
-                //read dummy character to clear
-                //input buffer, which inserts after character input
-             
+                
             
         }
     }
