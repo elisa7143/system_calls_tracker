@@ -19,4 +19,4 @@ Las opciones válidas (`OPTION`) para system_calls_tracker son:
 
 
 ## Desarrollado por
-[Kevin Hernández](https://github.com/kevinah95), [Steven Solano](https://github.com/solanors20), [Elisa Argueta](https://github.com/elisa7143), and [Jose Pablo Araya](https://github.com/arayajosepablo)
+[Kevin Hernández](https://github.com/kevinah95), [Steven Solano](https://github.com/solanors20), [Elisa Argueta](https://github.com/elisa7143), [Jose Pablo Araya](https://github.com/arayajosepablo)
