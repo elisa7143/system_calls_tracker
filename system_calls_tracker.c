@@ -14,6 +14,9 @@
 #include <getopt.h>
 #include <errno.h>
 
+void debug_with_step(char * path,char * args[]);
+void debug_without_step(char * path,char * args[]);
+
 
 /*
  * Check if a file exist using fopen() function
@@ -47,8 +50,8 @@ int main(int argc, char *argv[])
     if (optind >= argc){
         printf("argc %d", argc);
         fprintf(stderr, "Expected argument after main %s [-v or -V program name]\n"
-                        "ex. ./main -v soffice -writer\n"
-                        "    ./main -V soffice -draw\n", argv[0]);
+                        "ex. ./system_calls_tracker -v /bin/ls -l\n"
+                        "    ./system_calls_tracker -V /bin/ls -l\n", argv[0]);
         exit(EXIT_FAILURE);
     }
 
