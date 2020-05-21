@@ -10,6 +10,9 @@
 #include <sys/signal.h>
 #include <stdio.h>
 
+void debug_with_step(char * path,char * args);
+void debug_without_step(char * path,char * args);
+
 int main()
 {
     char * path = "/bin/ls";
@@ -55,7 +58,7 @@ void debug_with_step(char * path,char * args){
                              child, regs.rip,
                              NULL);
                 char *syscall = get_sys_call_name(regs.orig_rax);
-                printf("System call: %s     RBX: %ld    RCX: %ld    RDX: %ld\n",
+                printf("System call: %s     RBX: %llu    RCX: %llu    RDX: %llu\n",
                        syscall,
                        regs.rbx,
                        regs.rcx,
@@ -81,7 +84,6 @@ void debug_with_step(char * path,char * args){
             
         }
     }
-    return 0;
 }
 
 void debug_without_step(char * path,char * args){
