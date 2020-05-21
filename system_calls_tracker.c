@@ -14,6 +14,9 @@
 #include <getopt.h>
 #include <errno.h>
 
+void debug_with_step(char * path,char * args[]);
+void debug_without_step(char * path,char * args[]);
+
 
 /*
  * Check if a file exist using fopen() function
@@ -47,8 +50,8 @@ int main(int argc, char *argv[])
     if (optind >= argc){
         printf("argc %d", argc);
         fprintf(stderr, "Expected argument after main %s [-v or -V program name]\n"
-                        "ex. ./main -v soffice -writer\n"
-                        "    ./main -V soffice -draw\n", argv[0]);
+                        "ex. ./system_calls_tracker -v /bin/ls -l\n"
+                        "    ./system_calls_tracker -V /bin/ls -l\n", argv[0]);
         exit(EXIT_FAILURE);
     }
 
@@ -150,7 +153,7 @@ void debug_with_step(char * path,char * args[]){
                              child, regs.rip,
                              NULL);
                 char *syscall = get_sys_call_name(regs.orig_rax);
-                printf("System call: %s     RBX: %ld    RCX: %ld    RDX: %ld\n",
+                printf("System call: %s     RBX: %llu    RCX: %llu    RDX: %llu\n",
                        syscall,
                        regs.rbx,
                        regs.rcx,
@@ -172,7 +175,6 @@ void debug_with_step(char * path,char * args[]){
             
         }
     }
-    return 0;
 }
 
 void debug_without_step(char * path,char * args[]){

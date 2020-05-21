@@ -6,6 +6,7 @@
 #include "sys_call_table.h"
 
 #pragma mark - APIs -
+void init_sys_call_array();
 
 char* get_sys_call_name(long sys_call_number){
     if(strcmp(sys_call_names[0], "read") < 0){

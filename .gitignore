@@ -1,0 +1,4 @@
+*.o
+
+system_calls_tracker
+validaciones
